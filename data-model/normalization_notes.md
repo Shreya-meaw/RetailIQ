@@ -1,168 +1,213 @@
-# Normalization Notes
+# Data Normalization Notes
 
 ## Overview
 
-The retail sales dataset contains order, customer, product, shipping, location, and financial information in a single flat table. While this structure is suitable for operational record keeping, it introduces redundancy and is not optimized for analytical reporting.
+The Retail Sales dataset contains transactional information related to customer purchases, product details, shipping operations, geographic locations, and business performance metrics.
 
-A detailed review of the dataset was performed to identify repeated entities, data dependencies, and opportunities for dimensional modeling before building the reporting layer.
+The original dataset consists of **1,000 transaction records** and **21 attributes** stored in a single flat table.
 
----
-
-## Dataset Review
-
-The dataset contains information related to:
-
-* Orders
-* Customers
-* Products
-* Categories and Sub-Categories
-* Geographic Locations
-* Shipping Information
-* Sales Transactions
-* Profitability Metrics
-
-During the review process, multiple instances of repeated customer, product, and location information were identified across transactions.
+While this structure is suitable for recording transactions, several business entities are repeatedly stored across multiple records. A normalization review was conducted to identify data dependencies, reduce redundancy, and establish a foundation for analytical modeling.
 
 ---
 
-## Key Observations
+# Dataset Review
 
-### Customer Information Repetition
+The dataset contains the following attributes:
 
-The same customer appears across multiple orders over time.
-
-Repeated attributes include:
-
+* Row ID
+* Order ID
+* Order Date
+* Ship Date
+* Ship Mode
 * Customer ID
 * Customer Name
 * Segment
 * City
 * State
+* Country
+* Postal Code
 * Region
+* Product ID
+* Category
+* Sub-Category
+* Product Name
+* Sales
+* Quantity
+* Discount
+* Profit
 
-This causes customer information to be stored repeatedly within transaction records.
+The review identified repeated customer, product, geographic, and shipping information throughout the dataset.
 
 ---
 
-### Product Information Repetition
+# Customer Information Analysis
 
-Products are sold multiple times across different orders, customers, and regions.
+Customers may place multiple orders over time.
 
-Repeated attributes include:
+The following attributes are repeatedly stored across transactions:
+
+* Customer ID
+* Customer Name
+* Segment
+
+### Functional Dependency
+
+```text
+Customer ID
+    → Customer Name
+    → Segment
+```
+
+Since customer attributes are dependent on Customer ID, storing them in every transaction introduces redundancy.
+
+---
+
+# Product Information Analysis
+
+Products are sold repeatedly across different orders and customers.
+
+The following attributes are duplicated throughout the dataset:
 
 * Product ID
 * Product Name
 * Category
 * Sub-Category
 
-As the number of transactions grows, storing product details within every order creates redundancy.
+### Functional Dependency
+
+```text
+Product ID
+    → Product Name
+    → Category
+    → Sub-Category
+```
+
+Product information should therefore be separated from transactional records.
 
 ---
 
-### Location Information Repetition
+# Geographic Information Analysis
 
-Geographic information is repeated throughout the dataset.
+Location-related information appears repeatedly across transactions.
 
-Common repeated fields include:
+Repeated attributes include:
 
+* Postal Code
 * City
 * State
 * Region
 * Country
 
-These attributes are useful for reporting but do not change at the transaction level.
+### Functional Dependency
+
+```text
+Postal Code
+    → City
+    → State
+    → Region
+    → Country
+```
+
+These attributes describe geographic dimensions rather than individual sales events.
 
 ---
 
-### Date Information Repetition
+# Order and Shipping Analysis
 
-Each transaction stores order-related dates.
+Order-level information is shared across products belonging to the same order.
 
-Reporting frequently requires:
+Repeated attributes include:
 
-* Month
-* Quarter
-* Year
-* Year-over-Year Analysis
-* Seasonal Trend Analysis
+* Order ID
+* Order Date
+* Ship Date
+* Ship Mode
 
-Creating a dedicated date dimension simplifies time-based reporting and improves dashboard usability.
+### Functional Dependency
+
+```text
+Order ID
+    → Order Date
+    → Ship Date
+    → Ship Mode
+```
+
+These attributes describe the order itself rather than the individual product sale.
 
 ---
 
-### Transactional Measures
+# Transaction Measures
 
-The following fields represent measurable business facts and should remain within a fact table:
+The following fields represent measurable business facts:
 
 * Sales
-* Profit
 * Quantity
 * Discount
+* Profit
 
-These values change at the transaction level and form the basis of business performance analysis.
-
----
-
-## Business Insights Identified During Initial Review
-
-The dataset review also revealed several analytical opportunities that influenced the modeling approach.
-
-### High Discount and Negative Profit Relationship
-
-Initial inspection showed multiple transactions where large discounts were associated with negative profit values.
-
-This suggests that discounting strategy may directly impact profitability and should be investigated further during the analysis phase.
+These values vary for each transaction and must remain associated with the sales record.
 
 ---
 
-### Product Profitability Variations
+# Business Insights Identified During Review
 
-Some products generate high sales revenue but contribute relatively low profit.
+The normalization process also highlighted several analytical opportunities.
 
-This indicates that revenue alone is not a sufficient measure of business performance.
+### Discount Impact on Profitability
+
+Several transactions contain relatively high discount values while generating low or negative profit.
+
+This indicates that discounting strategy may have a direct impact on business profitability and should be explored during analysis.
 
 ---
 
-### Seasonal Sales Analysis Opportunity
+### Product Performance Variation
 
-The dataset contains multiple years of transactional data, making it suitable for:
+Some products generate substantial revenue but contribute comparatively lower profit margins.
+
+This suggests that sales revenue alone is not sufficient for evaluating product performance.
+
+---
+
+### Time-Based Analysis Opportunities
+
+The presence of order and shipping dates enables:
 
 * Monthly trend analysis
 * Quarterly performance analysis
-* Seasonal sales pattern detection
+* Year-over-Year comparison
+* Seasonal sales pattern analysis
 
 ---
 
-### Customer Retention Analysis Opportunity
+### Customer Analysis Opportunities
 
-Since customers appear repeatedly over different time periods, the dataset supports:
+Customer identifiers allow deeper analysis such as:
 
-* Customer lifetime analysis
-* Purchase frequency analysis
-* Customer churn identification
+* Customer lifetime value
+* Purchase frequency
+* Repeat customer behavior
+* Segment-level performance analysis
 
 ---
 
-## Normalization Approach
+# Normalization Approach
 
-To reduce redundancy and improve maintainability, the dataset was logically separated into business entities.
+Based on dependency analysis, the dataset can be logically separated into distinct business entities.
 
-### Customer Entity
+## Customer Entity
 
-Stores customer-related attributes:
+Stores customer-related information:
 
 * Customer ID
 * Customer Name
 * Segment
-* City
-* State
-* Region
 
 ---
 
-### Product Entity
+## Product Entity
 
-Stores product-related attributes:
+Stores product-related information:
 
 * Product ID
 * Product Name
@@ -171,63 +216,71 @@ Stores product-related attributes:
 
 ---
 
-### Date Entity
+## Location Entity
 
-Stores reporting and time intelligence attributes:
+Stores geographic information:
 
-* DateKey
-* Order Date
-* Month
-* Quarter
-* Year
-
-Ship Date remains available for fulfillment and logistics analysis.
+* Postal Code
+* City
+* State
+* Region
+* Country
 
 ---
 
-### Sales Transaction Entity
+## Order Entity
 
-Stores transactional business measures:
+Stores order and shipping information:
+
+* Order ID
+* Order Date
+* Ship Date
+* Ship Mode
+
+---
+
+## Sales Transaction Entity
+
+Stores transactional measures:
 
 * Sales
-* Profit
 * Quantity
 * Discount
+* Profit
 
-and references:
-
-* Customer
-* Product
-* Date
+along with references to customer, product, location, and order entities.
 
 ---
 
-## Dimensional Modeling Decision
+# Dimensional Modeling Decision
 
-A fully normalized transactional design was considered during the review process. However, the primary objective of this project is business intelligence reporting, KPI tracking, and dashboard development.
+A fully normalized database structure was evaluated during the review process. However, the primary objective of this project is analytical reporting, KPI tracking, and dashboard development.
 
-For analytical workloads, a Star Schema provides better performance and simpler reporting compared to a highly normalized operational model.
+For Business Intelligence workloads, dimensional models provide better performance and simpler reporting structures than highly normalized transactional schemas.
 
-Therefore, a dimensional warehouse design was selected.
+Therefore, the normalized entities were used as the foundation for designing a Star Schema.
 
 ---
 
-## Expected Benefits
+# Expected Benefits
 
 The dimensional model is expected to provide:
 
+* Reduced data redundancy
+* Improved data consistency
+* Simplified table relationships
 * Faster analytical queries
-* Simplified dashboard relationships
 * Better aggregation performance
-* Improved Power BI model efficiency
-* Easier KPI calculations
+* Enhanced Power BI model efficiency
 * Scalable reporting architecture
 
 ---
 
-## Outcome
+# Outcome
 
-Based on the normalization review, the retail dataset will be transformed into a dimensional model consisting of:
+The normalization review identified the major business entities present within the dataset and established the foundation for dimensional modeling.
+
+The resulting analytical model consists of:
 
 ### Fact Table
 
@@ -238,5 +291,6 @@ Based on the normalization review, the retail dataset will be transformed into a
 * DimCustomer
 * DimProduct
 * DimDate
+* DimLocation
 
-This structure will serve as the foundation for SQL analysis, business intelligence reporting, and Power BI dashboard development throughout the project.
+This structure supports efficient SQL analysis, business intelligence reporting, and Power BI dashboard development.
