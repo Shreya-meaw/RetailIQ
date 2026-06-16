@@ -1,5 +1,7 @@
 # Data Dictionary
 
+basic about col there are 21 col's with 1000 rows
+
 | Column Name | Description | Data Type | Example Values | Purpose |
 |-------------|-------------|-----------|----------------|---------|
 | Row ID | Unique identifier for each record | Integer | 1, 2, 3 | Track each row uniquely |
