@@ -1,0 +1,74 @@
+<mxfile host="65bd71144e">
+    <diagram id="SVkDFtZRNj_PqeYj3DKV" name="Page-1">
+        <mxGraphModel dx="537" dy="309" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="37" style="edgeStyle=orthogonalEdgeStyle;curved=1;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;strokeColor=#FF8000;" edge="1" parent="1" source="3" target="11">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="&lt;b&gt;FactSales&lt;/b&gt;" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+                    <mxGeometry x="340" y="240" width="160" height="250" as="geometry">
+                        <mxRectangle x="360" y="400" width="110" height="50" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="4" value="SalesKey (PK)&lt;div&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;OrderId&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;DateKey (FK)&lt;/div&gt;&lt;div&gt;CustomerKey (FK)&lt;/div&gt;&lt;div&gt;ProfuctKey (FK)&lt;/div&gt;&lt;div&gt;LocationKey (FK)&lt;/div&gt;&lt;div&gt;ShipModeKey (FK)&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Sales&lt;/div&gt;&lt;div&gt;Quantity&lt;/div&gt;&lt;div&gt;Discount&lt;/div&gt;&lt;div&gt;Profit&lt;/div&gt;" style="align=left;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;" vertex="1" parent="3">
+                    <mxGeometry y="50" width="160" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="&lt;b&gt;DimDate&lt;/b&gt;" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+                    <mxGeometry x="80" y="280" width="160" height="170" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="DateKey (PK)&lt;div&gt;&lt;font color=&quot;#000000&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;div&gt;FullDate&lt;/div&gt;&lt;div&gt;Day&lt;/div&gt;&lt;div&gt;Month&lt;/div&gt;&lt;div&gt;Quarter&lt;/div&gt;&lt;div&gt;Year&lt;/div&gt;&lt;/div&gt;" style="align=left;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;" vertex="1" parent="9">
+                    <mxGeometry y="50" width="160" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="&lt;b&gt;DImCustomer&lt;/b&gt;" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+                    <mxGeometry x="340" y="40" width="160" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="CustomerKey (PK)&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;CustomerID&lt;/div&gt;&lt;div&gt;CustomerName&lt;/div&gt;&lt;div&gt;Segment&lt;/div&gt;" style="align=left;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;" vertex="1" parent="11">
+                    <mxGeometry y="50" width="160" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="&lt;b&gt;DimProduct&lt;/b&gt;" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+                    <mxGeometry x="600" y="280" width="160" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="ProductKey (PK)&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;ProductID&amp;nbsp;&lt;/div&gt;&lt;div&gt;ProductName&lt;/div&gt;&lt;div&gt;Categry&lt;/div&gt;&lt;div&gt;SubCategory&lt;/div&gt;" style="align=left;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;" vertex="1" parent="13">
+                    <mxGeometry y="50" width="160" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="&lt;b&gt;DimLocation&lt;/b&gt;" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+                    <mxGeometry x="80" y="540" width="160" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="LocationKey (PK)&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;PostalCode&lt;/div&gt;&lt;div&gt;CIty&lt;/div&gt;&lt;div&gt;State&lt;/div&gt;&lt;div&gt;Region&lt;/div&gt;&lt;div&gt;Country&lt;/div&gt;" style="align=left;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;" vertex="1" parent="15">
+                    <mxGeometry y="50" width="160" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="&lt;b&gt;DimShipMode&lt;/b&gt;" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+                    <mxGeometry x="600" y="540" width="160" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="ShipModeKey (PK)&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;ShipMode&lt;/div&gt;" style="align=left;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;" vertex="1" parent="17">
+                    <mxGeometry y="50" width="160" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;strokeColor=#CC6600;" edge="1" parent="1" source="4" target="14">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0;exitY=0.25;exitDx=0;exitDy=0;strokeColor=#CC6600;" edge="1" parent="1" source="4" target="10">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="23" style="edgeStyle=elbowEdgeStyle;html=1;exitX=0;exitY=1;exitDx=0;exitDy=0;entryX=0.997;entryY=0.199;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=#CC6600;" edge="1" parent="1" source="4" target="15">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="28" style="edgeStyle=elbowEdgeStyle;html=1;entryX=0;entryY=0.25;entryDx=0;entryDy=0;exitX=0.977;exitY=0.996;exitDx=0;exitDy=0;exitPerimeter=0;strokeColor=#CC6600;" edge="1" parent="1" source="4" target="17">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="500" y="480" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="32" value="&lt;b&gt;&lt;i style=&quot;background-color: light-dark(#ffffff, var(--ge-dark-color, #121212));&quot;&gt;Star Schema&lt;/i&gt;&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;strokeColor=default;strokeWidth=1;perimeterSpacing=0;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="40" width="160" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="33" value="&lt;h3 style=&quot;text-align: center;&quot; data-end=&quot;91&quot; data-start=&quot;82&quot; data-section-id=&quot;6zzv5x&quot;&gt;Notes&lt;/h3&gt;&lt;ul data-end=&quot;357&quot; data-start=&quot;92&quot;&gt;&lt;li data-end=&quot;179&quot; data-start=&quot;92&quot; data-section-id=&quot;12cm83z&quot;&gt;&lt;strong data-end=&quot;107&quot; data-start=&quot;94&quot;&gt;FactSales&lt;/strong&gt; serves as the central fact table containing all transactional measures.&lt;/li&gt;&lt;li data-end=&quot;241&quot; data-start=&quot;180&quot; data-section-id=&quot;2reqmx&quot;&gt;All dimension tables are directly linked to the fact table.&lt;/li&gt;&lt;/ul&gt;" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;align=left;" vertex="1" parent="1">
+                    <mxGeometry x="600" y="30" width="200" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="35" value="&lt;table class=&quot;w-fit min-w-(--thread-content-width)&quot; data-end=&quot;540&quot; data-start=&quot;370&quot;&gt;&lt;thead data-end=&quot;394&quot; data-start=&quot;370&quot;&gt;&lt;tr data-end=&quot;394&quot; data-start=&quot;370&quot;&gt;&lt;th class=&quot;last:pe-10&quot; data-col-size=&quot;sm&quot; data-end=&quot;379&quot; data-start=&quot;370&quot;&gt;Symbol&lt;/th&gt;&lt;th class=&quot;last:pe-10&quot; data-col-size=&quot;md&quot; data-end=&quot;394&quot; data-start=&quot;379&quot;&gt;Description&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody data-end=&quot;540&quot; data-start=&quot;420&quot;&gt;&lt;tr data-end=&quot;444&quot; data-start=&quot;420&quot;&gt;&lt;td data-col-size=&quot;sm&quot; data-end=&quot;429&quot; data-start=&quot;420&quot;&gt;&lt;strong data-end=&quot;428&quot; data-start=&quot;422&quot;&gt;PK&lt;/strong&gt;&lt;/td&gt;&lt;td data-col-size=&quot;md&quot; data-end=&quot;444&quot; data-start=&quot;429&quot;&gt;Primary Key&lt;/td&gt;&lt;/tr&gt;&lt;tr data-end=&quot;469&quot; data-start=&quot;445&quot;&gt;&lt;td data-col-size=&quot;sm&quot; data-end=&quot;454&quot; data-start=&quot;445&quot;&gt;&lt;strong data-end=&quot;453&quot; data-start=&quot;447&quot;&gt;FK&lt;/strong&gt;&lt;/td&gt;&lt;td data-end=&quot;469&quot; data-start=&quot;454&quot; data-col-size=&quot;md&quot;&gt;Foreign Key&lt;/td&gt;&lt;/tr&gt;&lt;tr data-end=&quot;540&quot; data-start=&quot;470&quot;&gt;&lt;td data-col-size=&quot;sm&quot; data-end=&quot;487&quot; data-start=&quot;470&quot;&gt;&lt;strong data-end=&quot;486&quot; data-start=&quot;472&quot;&gt;Fact Table&lt;/strong&gt;&lt;/td&gt;&lt;td data-end=&quot;540&quot; data-start=&quot;487&quot; data-col-size=&quot;md&quot;&gt;Stores quantitative measures and business metrics&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="110" width="160" height="110" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
