@@ -144,8 +144,8 @@ Current Progress:
 
 - [x] Project Repository Created
 - [x] Dataset Uploaded
-- [ ] Data Cleaning
-- [ ] Data Modeling
+- [x] Data Cleaning
+- [x] Data Modeling
 - [ ] SQL Analysis
 - [ ] Data Warehouse Design
 - [ ] Power BI Dashboard Development
