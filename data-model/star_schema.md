@@ -104,13 +104,14 @@ Stores calendar attributes used for time intelligence and trend analysis.
 
 ### Attributes
 
-* DateKey
-* FullDate
-* Day
-* Month
-* Quarter
-* Year
-
+DateKey
+FullDate
+DayNumber
+MonthNumber
+MonthName
+QuarterNumber
+YearNumber
+(as it is close to BI standards)
 ---
 
 # DimShipMode
