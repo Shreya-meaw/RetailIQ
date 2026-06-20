@@ -111,7 +111,7 @@ MonthNumber
 MonthName
 QuarterNumber
 YearNumber
-(as it is close to BI standards)
+
 ---
 
 # DimShipMode
