@@ -1,15 +1,14 @@
--- ==========================================
+
 -- Retail Sales Analytics System
 -- Star Schema Implementation
--- ==========================================
+
 
 CREATE DATABASE IF NOT EXISTS retail_sales_dw;
 
 USE retail_sales_dw;
 
--- ==========================================
 -- Dimension: Customer
--- ==========================================
+
 
 CREATE TABLE DimCustomer (
     CustomerKey INT AUTO_INCREMENT PRIMARY KEY,
@@ -18,9 +17,8 @@ CREATE TABLE DimCustomer (
     Segment VARCHAR(50) NOT NULL
 );
 
--- ==========================================
 -- Dimension: Product
--- ==========================================
+
 
 CREATE TABLE DimProduct (
     ProductKey INT AUTO_INCREMENT PRIMARY KEY,
@@ -30,9 +28,9 @@ CREATE TABLE DimProduct (
     SubCategory VARCHAR(100) NOT NULL
 );
 
--- ==========================================
+
 -- Dimension: Location
--- ==========================================
+
 
 CREATE TABLE DimLocation (
     LocationKey INT AUTO_INCREMENT PRIMARY KEY,
@@ -43,9 +41,9 @@ CREATE TABLE DimLocation (
     Country VARCHAR(100) NOT NULL
 );
 
--- ==========================================
+
 -- Dimension: Date
--- ==========================================
+
 
 CREATE TABLE DimDate (
     DateKey INT PRIMARY KEY,
@@ -57,18 +55,18 @@ CREATE TABLE DimDate (
     YearNumber INT NOT NULL
 );
 
--- ==========================================
+
 -- Dimension: Ship Mode
--- ==========================================
+
 
 CREATE TABLE DimShipMode (
     ShipModeKey INT AUTO_INCREMENT PRIMARY KEY,
     ShipMode VARCHAR(50) NOT NULL
 );
 
--- ==========================================
+
 -- Fact Table: Sales
--- ==========================================
+
 
 CREATE TABLE FactSales (
     SalesKey INT AUTO_INCREMENT PRIMARY KEY,
